@@ -1,0 +1,30 @@
+<form #f="ngForm" (ngSubmit)="onSubmit()">
+  <div class="flex">
+    <div class="form-control w-full max-w-sm mr-3">
+      <label class="label">
+        <span class="label-text">Ingredient name</span>
+      </label>
+      <input ngModel name="name" required #name="ngModel"
+             type="text" placeholder="Type here" class="input input-bordered w-full max-w-sm"/>
+      <div *ngIf="name.invalid && (name.dirty || name.touched)" class="text-sm text-red-600 mt-2">
+        <span *ngIf="name.errors?.['required']">Ingredient Name is required</span>
+      </div>
+    </div>
+    <div class="form-control w-full max-w-[10rem]">
+      <label class="label">
+        <span class="label-text">Quantity</span>
+      </label>
+      <input ngModel name="quantity" #quantity="ngModel" type="number" min="1" required placeholder="Type here"
+             class="input input-bordered w-full max-w-xs"/>
+      <div *ngIf="quantity.invalid && (quantity.dirty || quantity.touched)" class="text-sm text-red-600 mt-2">
+        <span *ngIf="quantity.errors?.['required']">Quantity is required</span>
+      </div>
+    </div>
+  </div>
+  <div class="flex space-x-1 mt-4">
+    <button [ngClass]="editMode ? 'btn-secondary' : 'btn-primary'" class="btn btn-active"
+            [disabled]="!f.valid">{{ editMode ? 'Update' : 'Add'}}</button>
+    <button class="btn btn-active btn-error" type="button" (click)="onDelete()" [disabled]="!editMode">Delete</button>
+    <button class="btn btn-active btn-ghost" type="button" (click)="onClear()" [disabled]="!editMode">Clear</button>
+  </div>
+</form>

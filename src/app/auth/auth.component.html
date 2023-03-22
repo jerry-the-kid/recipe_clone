@@ -1,0 +1,29 @@
+<div class="hero bg-base-200 py-14 rounded-2xl w-2/4 mx-auto">
+  <div class="hero-content w-2/3">
+    <div class="w-full">
+      <h1 class="text-5xl font-bold mb-6">Login</h1>
+      <form class="space-y-6" #form="ngForm" (ngSubmit)="onSubmit(form)">
+        <div class="form-control w-full">
+          <label class="label">
+            <span class="label-text text-lg">Email</span>
+          </label>
+          <input type="email" placeholder="Type here" class="input input-bordered w-full"
+                  name="email" ngModel
+                 required/>
+        </div>
+        <div class="form-control w-full">
+          <label class="label">
+            <span class="label-text text-lg">Password</span>
+          </label>
+          <input type="password" placeholder="Type here" class="input input-bordered w-full"
+                 name="password" ngModel
+                 required minlength="6"/>
+        </div>
+        <div class="flex justify-end">
+          <button class="btn btn-primary " type="submit">Submit</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
